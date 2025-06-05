@@ -15,7 +15,7 @@ A.init.then(() => {
     var c = document.createElement('canvas'); c.width = c.height = 11; var ctx = c.getContext('2d'); ctx.beginPath(); ctx.arc(5, 5, 4, 0, 2 * Math.PI, false); ctx.closePath(); ctx.strokeStyle = '#ccc'; ctx.lineWidth = 2; ctx.stroke();
 
     // load LIF catalogue
-    var cat = A.catalogFromURL('https://dfn.gfo.rocks/NELIOTA_LIFs_2017-2023.xml', {sourceSize:12, color: '#ae4', shape: 'plus',
+    var cat = A.catalogFromURL('https://hdevillepoix.github.io/LIF_Aladin/NELIOTA_LIFs_2017-2023.xml', {sourceSize:12, color: '#ae4', shape: 'plus',
                                                                                     raField: 'Longitude', decField: 'Latitude',
                                                                                     onClick: 'showTable'});
     aladin.addCatalog(cat);
