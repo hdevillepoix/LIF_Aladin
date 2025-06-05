@@ -1,0 +1,26 @@
+<script src='https://aladin.cds.unistra.fr/AladinLite/api/v3/latest/aladin.js' charset='utf-8'></script>
+<script>
+var aladin;
+A.init.then(() => {
+    aladin = A.aladin('#aladin-lite-div', {target: '0 +0', cooFrame: 'j2000d', fov: 180, showFrame: false, showLayersControl: true, showGotoControl: false, fullScreen: true});
+    // set a bunch of moon image surveys so they appear on the list
+    aladin.setImageSurvey(
+        aladin.newImageSurvey('https://hips.china-vo.org/change2-moon-7m-dom', {imgFormat: 'png', colormap: "redtemperature"})
+      );
+    aladin.setImageSurvey('CDS/P/Moon/geological-map');
+    aladin.setImageSurvey('CDS/P/Moon/Clementine-750nm-118m');
+    aladin.setImageSurvey('CDS/P/Moon/LROC-WAC-GLD100-118m');
+    aladin.setImageSurvey('CDS/P/Moon/LROC-WAC-100m');
+
+    var c = document.createElement('canvas'); c.width = c.height = 11; var ctx = c.getContext('2d'); ctx.beginPath(); ctx.arc(5, 5, 4, 0, 2 * Math.PI, false); ctx.closePath(); ctx.strokeStyle = '#ccc'; ctx.lineWidth = 2; ctx.stroke();
+
+    // load LIF catalogue
+    var cat = A.catalogFromURL('https://dfn.gfo.rocks/NELIOTA_LIFs_2017-2023.xml', {sourceSize:12, color: '#ae4', shape: 'plus',
+                                                                                    raField: 'Longitude', decField: 'Latitude',
+                                                                                    onClick: 'showTable'});
+    aladin.addCatalog(cat);
+    
+    
+});
+</script> 
+<div id='aladin-lite-div' style='width: 500px; height: 500px;'></div>
